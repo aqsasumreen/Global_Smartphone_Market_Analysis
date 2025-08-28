@@ -1,0 +1,39 @@
+-> Power bi me ja k Smartphone k folder ko select krein gy
+-> Transform kr k
+-> View-> Advance Editor me k ja M-code likhna jo k dono jsons files ko merge kr k data extract kry ga
+-> Point = Both files are: Type: list (array in JSON)
+	  Each element in the list is a record (dictionary) with smartphone specs.
+->hmary pas 2nd JSON files me kuch unique columns hy jo k first me nhi hy, tou hmy M-code me unhy be load aur expand krna hy.
+
+-> scraped_at column ka kya ho raha hai
+Jab JSON expand hota hai (Table.ExpandRecordColumn), har row ka apna scraped_at column load hota hai exactly jaise file me tha.
+
+Table.TransformColumnTypes(..., {{"scraped_at", type datetime}})
+→ Sirf iska data type text se datetime me convert ho raha hai.
+
+Koi overwrite nahi ho raha — dono files ke date values apni-apni rows ke sath safe hain.
+
+Agar same phone 2 alag scraped_at values ke sath hai, to dono versions preserved rehte hain.
+
+-> kuch columns(20) unnecessary thy, unko b remove krna.
+-> Brightness, Screen-to-body ratio me Filled-down
+-> Aspect ratio me filled-up 
+-> interface ka column me null values hy lkn hm isy fill nhi kr skty kiun k sb brands ka apna interface hta
+-> Hmy MAX charging speed find krny tou uska column Text me hy (240W), iskaliye hmy split krna ho ga, number extract krny ho gy. Load krny se phly column
+	add kr skty  M-code likh k, ya Load k bd DAX se b new column add ho skta.
+	jb number column bny ga tou dax me max find krty huye format me "W" unit add krna.
+-> similar for all text column jb b aggregate functions lgany ho.
+
+-> hmny check krna k wo knsy mobiles jin me 5G + Waterproofing + Gorilla Glass protection hy.
+	Has5G se se columns bnana jis me Jha 5G hna wha 1 otherwise 0, Ismy koi null value nhi,
+	Screen protection me Null values hy jis me hm Filled up kry gy. aur filter lga k 0,1 result lena in HasGorilla
+	HasWaterproofing ka column bna k 0,1
+	ab aik column banna "HasAll" jis me ye 3no values common ho wha 1, else 0
+-> jb stacked column chart bnana, tou X-axis me model, Y-axis me MAX Price_unofficial(price_official is unavailable), aur filter me HasALL3 lgana,
+	Aur 1 select krna.
+  
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+

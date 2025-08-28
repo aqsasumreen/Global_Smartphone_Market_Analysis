@@ -1,0 +1,51 @@
+🔹 KPI Questions (Cards, KPI Visuals)
+
+How many unique smartphone models are currently available vs upcoming vs rumored?
+Hint: KPI card with status filter. (slicer)
+
+What is the highest battery capacity smartphone and its brand?
+Hint: KPI card with Max Battery Capacity.
+
+Which smartphone has the fastest charging speed (Watts)?
+Hint: KPI card → highlight Max Charging Watt.
+
+What is the most expensive smartphone (unofficial/official price)?
+Hint: KPI card with Max Price (dynamic measure).
+
+Average RAM and Storage across all available devices.
+Hint: KPI cards → Avg RAM (GB) and Avg Storage (GB).
+
+Total number of brands represented.
+Hint: KPI card with Distinct Brand Count.
+
+% of Models with 5G Support
+Hint: KPI card with a circular gauge.
+
+
+🔹 Visual Analysis Questions
+
+1- Which brands release the most smartphones? -- dril through
+Hint: Bar/Column Chart → Brand vs Count of Models.
+
+2- What is the price distribution across brands?-- tooltip
+Hint: Box Plot or Violin Chart → Price (Y-axis) vs Brand (X-axis).
+
+3- Which chipset families are used the most?
+Hint: TreeMap → Chipset / GPU usage by Brand.
+
+4-Trend of new smartphone releases by month (scraped_at or release_date)?
+Hint: Line Chart → Count of Models vs Release year.
+
+5-Camera megapixels trend across brands (primary_camera_resolution).
+Hint: Bar Chart → Max MP vs Brand.
+
+6- How many models have 5G + Waterproofing + Gorilla Glass protection, and what is their price range?
+Hint: Stacked Column Chart with a slicer for feature selection (dynamic measure using SWITCH DAX).
+
+
+🔹 Recommended Slicers
+
+
+Status (Available / Upcoming / out of stock)
+
+Price Range (between slicer) <30k, 30k-60k, >60k

@@ -1,0 +1,64 @@
+-- Tooltip--
+
+🔹 Step 1: Tooltip Page banao
+
+Power BI me ek New Page add karo.
+Is page ki settings me jao:
+Format → Page Information → Tooltip = On
+Page size chhota kar do (Format → Canvas settings → Page size → Tooltip).
+	Ab ye page automatically tumhare Tooltip options me aa jayega.
+
+🔹 Step 2: Card Visual me Tooltip set karo
+
+Ab wapas jao apne main dashboard pr, chart select kro.
+Format → General → Tooltip → Type = Report page.
+Niche dropdown me tumhara banaya hua tooltip page select hoga.
+
+---------------------------------------------------------------
+🎯 Step-by-Step Drill-through Setup (Power BI)
+
+Step 1: Create a New Drill-through Page
+1. Power BI me ek **new page** banao → isse naam do `Brand Details`.
+
+Step 2: Add Drill-through Filter
+1. Right side **Visualizations Pane → Drill-through filters** me:
+
+   * Drag **Brand column** (`Smartphones[brand]`) into Drill-through field well.
+   * Ye ensure karega ki jab user kisi brand (e.g., Xiaomi, Samsung) pe right-click kare → ye page filter ho jaye.
+
+⚡ Pro Tip: “Keep all filters” option ON rakho, taake slicers/filters context carry forward ho jaye.
+
+
+Step 3: Build Storytelling Visuals on Drill-through Page
+(A) Yearly Trend (Line/Area Chart)
+
+ X-axis → `Year` (from Calendar table).
+ Y-axis → `Models Count` ya `Sales/Price Trend` (jo tumhare dataset me available hai).
+
+(B) Top 3 Expensive Models (Bar/Column Chart)
+Visual type → **Bar Chart** (Top N filter).
+Axis → `Model`.
+Values → `Price_Official` ya `Avg Price`.
+Apply **Top N filter = 3** (based on price).
+Sort Descending.
+
+(C) Avg Battery & Storage (KPI Cards / Multi-row Card)
+Card Visual → Avg(`Battery`).
+Card Visual → Avg(`Storage`).
+
+Step 4: Format & Polish
+Add **Page Title**: e.g., *“Drill-through Analysis: \[Brand]”* → use dynamic title:
+
+  ```
+  "Brand Deep Dive – " & SELECTEDVALUE(Smartphones[brand])
+  ```
+Use consistent theme (jo tumne global dashboard me liya hai).
+Add subtle icons (battery, storage, price tags) for executive storytelling.
+
+
+Step 5: Enable Drill-through from Main Page
+1. Go back to your main dashboard (e.g., `Models Count by Brand` bar chart).
+2. Right-click on any bar (e.g., Xiaomi) → You’ll now see **Drill-through → Brand Details**.
+3. Test with multiple brands → it should open filtered insights.
+
+
